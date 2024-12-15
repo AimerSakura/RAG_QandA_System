@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>用户注册</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    <h1>用户注册</h1>
+    {% if error %}
+        <p style="color:red;">{{ error }}</p>
+    {% endif %}
+    <form action="/register" method="post">
+        <div>
+            <label for="username">用户名:</label>
+            <input type="text" name="username" id="username" required>
+        </div>
+        <div>
+            <label for="password">密码:</label>
+            <input type="password" name="password" id="password" required>
+        </div>
+        <div>
+            <label for="password_confirm">确认密码:</label>
+            <input type="password" name="password_confirm" id="password_confirm" required>
+        </div>
+        <button type="submit">注册</button>
+    </form>
+    <p>已有账号？<a href="/login">去登录</a></p>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>依赖分析结果</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    <h1>依赖分析结果</h1>
+    {% if data %}
+    <p>以下展示当前环境中已安装包的依赖关系：</p>
+    <table border="1" cellpadding="5" style="border-collapse: collapse;">
+        <thead>
+            <tr>
+                <th>包名</th>
+                <th>版本</th>
+                <th>直接依赖项</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in data %}
+            <tr>
+                <td>{{ item.package.key }}</td>
+                <td>{{ item.package.installed_version }}</td>
+                <td>
+                    {% if item.dependencies %}
+                        <ul>
+                        {% for dep in item.dependencies %}
+                            <li>{{ dep.package.key }}=={{ dep.package.installed_version }}</li>
+                        {% endfor %}
+                        </ul>
+                    {% else %}
+                        无依赖
+                    {% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+    <p>无数据可显示</p>
+    {% endif %}
+    <a href="/">返回首页</a>
+</body>
+</html>

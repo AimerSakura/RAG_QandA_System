@@ -1,0 +1,11 @@
+fastapi
+uvicorn[standard]
+jinja2
+python-multipart
+langchain
+langchain_chroma
+langchain_community
+transformers
+chromadb
+torch
+pipdeptree

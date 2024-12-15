@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>问答结果</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    <h1>问答结果</h1>
+    {% if result.error %}
+        <p style="color: red;">{{ result.error }}</p>
+    {% else %}
+        <h2>回答：</h2>
+        <p>{{ result.answer }}</p>
+    {% endif %}
+    <a href="/">返回首页</a>
+</body>
+</html>

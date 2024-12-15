@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>简易RAG问答系统</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    {% if user %}
+        <p>当前用户：{{ user }} | <a href="/logout">注销</a></p>
+    {% else %}
+        <p><a href="/login">登录</a> | <a href="/register">注册</a></p>
+    {% endif %}
+    <h1>简易RAG问答系统</h1>
+    {% if user %}
+    <form action="/ask" method="post" enctype="multipart/form-data">
+        <div>
+            <label for="file">上传Markdown文档（可选）:</label>
+            <!-- 去掉 required 属性，使文件上传变为可选 -->
+            <input type="file" id="file" name="file" accept=".md,.txt">
+        </div>
+        <div>
+            <label for="question">请输入您的问题(必填):</label>
+            <textarea id="question" name="question" rows="4" cols="50" required></textarea>
+        </div>
+        <div>
+            <button type="submit">提交问题</button>
+        </div>
+    </form>
+    <p><a href="/admin/dependencies">查看依赖分析结果</a></p>
+    {% else %}
+    <p>请先登录后使用RAG问答功能。</p>
+    {% endif %}
+</body>
+</html>
